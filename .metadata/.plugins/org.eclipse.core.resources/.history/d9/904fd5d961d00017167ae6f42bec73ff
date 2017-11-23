@@ -1,0 +1,21 @@
+import javax.swing.*;
+
+public class Card
+{
+	
+	private static Card instance = new Card();
+	
+	private Card() { }
+	
+	public static synchronized Card GetInstance()
+	{		
+		return instance;
+	}
+	
+	public int type;
+	public int num;
+	public String path;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+}

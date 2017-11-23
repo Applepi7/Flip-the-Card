@@ -1,0 +1,29 @@
+import javax.swing.*;
+
+public class Card
+{
+	
+	private static Card instance;
+	
+	public static Card GetInstance()
+	{		
+		if(instance == null)
+		{
+			instance = new Card();
+		}
+		return instance;
+	}
+	
+	public int type;
+	
+	HashMap<String, Integer> type = new HashMap<String, Integer>(); 
+	
+	public int num;
+	public String path;
+	public boolean isFlip = false;
+	
+	public JButton card1, card2;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+}

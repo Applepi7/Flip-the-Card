@@ -1,0 +1,43 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+public class ActionListenerManager implements ActionListener
+{
+	private static int num = 0;
+	
+	public enum Type
+	{
+		FIRST,
+		SECOND
+	};
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		JButton b = (JButton) e.getSource();
+		JButton prevB = b;
+		
+		HashMap<String, Type> first = new HashMap<String, Type>();
+		HashMap<String, Type> firstmean = new HashMap<String, Type>();
+		
+		first.put("Resource/Eng/1_1.png", Type.FIRST);
+		firstmean.put("Resource/Eng/1_2.png", Type.FIRST);
+		
+		if(num == 0)
+		{
+			b.setIcon(new ImageIcon("Resource/Eng/1_1.png"));
+			num = 1;
+		}
+		else if(num == 1)
+		{
+			b.setIcon(new ImageIcon("Resource/Eng/1_2.png"));
+			prevB.setEnabled(false);
+			b.setEnabled(false);
+		}
+		
+		
+	}
+}

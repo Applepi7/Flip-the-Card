@@ -1,0 +1,26 @@
+import javax.swing.*;
+
+public class Card
+{
+	
+	public enum Type	// 문제 번호
+	{
+		FIRST,
+		SECOND,
+		THIRD,
+		FOURTH,
+		FIFTH,
+		SIXTH,
+		SEVENTH,
+		EIGHTH,
+		NINTH,
+		TENTH
+	};
+	
+	public  type;
+	public String path;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+
+}

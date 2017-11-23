@@ -1,0 +1,31 @@
+import java.util.HashMap;
+
+import javax.swing.*;
+
+public class Card
+{
+	
+	private static Card instance;
+	
+	public static Card GetInstance()
+	{		
+		if(instance == null)
+		{
+			instance = new Card();
+		}
+		return instance;
+	}
+	
+	HashMap<String , Integer> map = new HashMap<String , Integer>();
+
+	출처: http://arabiannight.tistory.com/entry/자바Java-자바-HashMap-이란 [아라비안나이트]
+	
+	public int num;
+	public String path;
+	public boolean isFlip = false;
+	
+	public JButton card1, card2;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+}

@@ -1,0 +1,9 @@
+import javax.swing.*;
+
+public class Card
+{
+	public int num;
+	
+	JButton card = new JButton();
+	
+}

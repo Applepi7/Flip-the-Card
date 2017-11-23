@@ -1,0 +1,14 @@
+import javax.swing.*;
+
+public class Card
+{
+	
+	private static Card instance;
+	
+	public int type;
+	public String path;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+
+}

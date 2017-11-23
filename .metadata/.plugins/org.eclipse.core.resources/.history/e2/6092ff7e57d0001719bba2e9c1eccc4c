@@ -1,0 +1,10 @@
+import javax.swing.*;
+
+public class Card
+{
+	public int num;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+
+}

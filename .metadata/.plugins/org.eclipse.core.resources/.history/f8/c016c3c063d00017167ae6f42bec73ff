@@ -1,0 +1,22 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+public class ActionListenerManager implements ActionListener
+{
+	private Card c;
+	
+	public ActionListenerManager(Card c)
+	{
+		
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		Card.GetInstance().card = (JButton) e.getSource();
+		c.card.setIcon(new ImageIcon(Card.GetInstance().path));
+	}
+}

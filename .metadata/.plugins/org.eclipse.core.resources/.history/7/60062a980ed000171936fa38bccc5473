@@ -1,0 +1,10 @@
+
+public class MenuScene {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		JButton start = new JButton("게임 시작");
+	}
+
+}

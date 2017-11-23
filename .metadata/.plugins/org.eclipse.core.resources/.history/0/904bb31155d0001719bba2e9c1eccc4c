@@ -1,0 +1,8 @@
+
+public class Card
+{
+	public int num;
+	public 
+	
+	JButton card = new JButton();
+}

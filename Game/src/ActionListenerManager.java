@@ -1,19 +1,27 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ActionListenerManager implements ActionListener
 {
-	private int num = 0;
+	private Card c;
+	
+	public ActionListenerManager(Card card)
+	{
+		c = card;
+	}
 	
 	public void actionPerformed(ActionEvent e) 
 	{
-		JButton b = (JButton) e.getSource();
-		if(num == 0)
+		c.card = (JButton) e.getSource();
+		if(!c.isFlip)
 		{
-			b.setIcon(new ImageIcon("Resource/Eng/1_1.png"));
+			c.card.setIcon(new ImageIcon(c.path));
+			c.isFlip = true;
 		}
+			
 	}
 }
