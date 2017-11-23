@@ -10,6 +10,39 @@ public class EnglishScene {
 	final static int cardHeight = 100; // 카드 높이
 	static int index = 0;
 	
+	public static ArrayList<Card> clickCardList = new ArrayList<Card>();
+	
+	static void test1(Card c) throws InterruptedException 
+	{
+	      clickCardList.add(c);
+	   
+	      if(clickCardList.size() >= 2) 
+	      {
+	         if((clickCardList.get(0).type == clickCardList.get(1).type) && (clickCardList.get(0).num != clickCardList.get(1).num))
+	         {
+	            clickCardList.get(0).card.setEnabled(false);
+	            clickCardList.get(1).card.setEnabled(false);
+	            
+	            clickCardList.clear();
+	         }
+	         else
+	         { 	        	 
+	            clickCardList.get(0).card.setIcon(new ImageIcon(clickCardList.get(0).path));
+	            clickCardList.get(1).card.setIcon(new ImageIcon(clickCardList.get(1).path));
+	            
+	            
+	            
+	            clickCardList.get(0).card.setIcon(new ImageIcon("Resource/backImage.png"));
+	            clickCardList.get(0).isFlip = false;
+	            clickCardList.get(1).card.setIcon(new ImageIcon("Resource/backImage.png"));
+	            clickCardList.get(1).isFlip = false;
+	            
+	            clickCardList.clear();
+	         }
+	      }
+	}
+
+	
 	public enum Type	// 문제 번호
 	{
 		FIRST,
@@ -29,7 +62,7 @@ public class EnglishScene {
 		JFrame frame = new JFrame("카드게임 아하핳ㅎ하ㅏ핳");
 		JPanel panel = new JPanel();
 		Card[] cardArr = new Card[SIZE];
-		ArrayList<Card> clickCardList = new ArrayList<Card>();
+		
 		
 		int cardNum[] = new int[SIZE];	// 카드 번호를 저장하는 배열
 		//boolean bCheckExistOfNum[] = new boolean[SIZE]; // 중복 체크를 하는 배열
@@ -165,36 +198,6 @@ public class EnglishScene {
 		frame.setVisible(true);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		while(true)
-		{			
-			for(int i = 0; i < cardArr.length; i++)
-			{
-				if(cardArr[i].isFlip == true)
-				{
-					clickCardList.add(cardArr[i]);
-					System.out.println(clickCardList.get(0).type);
-				}
-			}
-			
-			if(clickCardList.get(0) != null)
-			{
-				if(clickCardList.get(0).type == clickCardList.get(1).type)
-				{
-					clickCardList.get(0).card.setEnabled(false);
-					clickCardList.get(1).card.setEnabled(false);
-				}
-				else
-				{
-					clickCardList.get(0).card.setIcon(new ImageIcon("Resource/backImage.png"));
-					clickCardList.get(1).card.setIcon(new ImageIcon("Resource/backImage.png"));
-				}
-				clickCardList.remove(0);
-				clickCardList.remove(1);
-			}
-			/*
-			 */
-		}
 		
 	}
 

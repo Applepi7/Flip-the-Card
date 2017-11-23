@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+public class Card
+{
+	public ArrayList<Card> clickCardList = new ArrayList<Card>();
+	
+	public int type;
+	
+	public int num;
+	public String path;
+	public boolean isFlip = false;
+	
+	public JButton card = new JButton(new ImageIcon("Resource/backImage.png"));
+	
+}

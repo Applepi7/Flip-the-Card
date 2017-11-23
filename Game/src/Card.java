@@ -2,18 +2,6 @@ import javax.swing.*;
 
 public class Card
 {
-	
-	private static Card instance;
-	
-	public static Card GetInstance()
-	{		
-		if(instance == null)
-		{
-			instance = new Card();
-		}
-		return instance;
-	}
-	
 	public int type;
 	
 	public int num;
