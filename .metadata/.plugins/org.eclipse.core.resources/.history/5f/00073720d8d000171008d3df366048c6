@@ -1,0 +1,72 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+public class ActionListenerManager implements ActionListener
+{
+	private Card c;
+	
+	public ActionListenerManager(Card card)
+	{
+		c = card;
+	}
+	
+	public static ArrayList<Card> clickCardList = new ArrayList<Card>();
+	
+	static void Task(Card c) throws InterruptedException 
+	{
+	      clickCardList.add(c);
+	   
+	      if(clickCardList.size() >= 2) 
+	      {
+	         if((clickCardList.get(0).type == clickCardList.get(1).type) && (clickCardList.get(0).num != clickCardList.get(1).num))
+	         {
+	        	 // true
+	            clickCardList.get(0).card.setEnabled(false);
+	            clickCardList.get(1).card.setEnabled(false);
+	            
+	            clickCardList.clear();
+	         }
+	         else
+	         { 	        	 
+	        	 // false answer
+	            //clickCardList.get(0).card.setIcon(new ImageIcon(clickCardList.get(0).path));
+	            //clickCardList.get(1).card.setIcon(new ImageIcon(clickCardList.get(1).path));
+	            System.out.println("asdfasdf");
+	            Thread.sleep(1000);
+	            System.out.println("asdfasdf");
+	            clickCardList.get(0).card.setIcon(new ImageIcon("Resource/backImage.png"));
+	            clickCardList.get(1).card.setIcon(new ImageIcon("Resource/backImage.png"));
+	            //clickCardList.get(1).isFlip = false;
+	            
+	            clickCardList.clear();
+	         }
+	      }
+	      else if (clickCardList.size() == 1) {
+	    	  
+	      }
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		c.card = (JButton) e.getSource();
+		
+		if(!c.isFlip)
+		{
+			c.card.setIcon(new ImageIcon(c.path));
+			c.isFlip = true;
+		}
+		
+		try {
+	         Task(c);
+	      } catch (InterruptedException e1) {
+	         // TODO Auto-generated catch block
+	         e1.printStackTrace();
+	      }
+		
+	}
+}

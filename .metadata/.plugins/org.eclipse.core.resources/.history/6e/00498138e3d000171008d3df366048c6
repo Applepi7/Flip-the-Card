@@ -1,0 +1,163 @@
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.*;
+
+
+
+
+public class EnglishScene extends Scene{	
+	static boolean check_card = false;
+	static void Task(Card c) throws InterruptedException 
+	{
+	      clickCardList.add(c);
+	   
+	      if(clickCardList.size() >= 2) 
+	      {
+	         if((clickCardList.get(0).type == clickCardList.get(1).type) && (clickCardList.get(0).num != clickCardList.get(1).num))
+	         {
+	        	 // true\
+	            clickCardList.get(0).card.setEnabled(false);
+	            clickCardList.get(1).card.setEnabled(false);
+	            
+	            clickCardList.clear();
+	         }
+	         else
+	         { 	        	 
+	        	 // false answer
+	            //clickCardList.get(0).card.setIcon(new ImageIcon(clickCardList.get(0).path));
+	            //clickCardList.get(1).card.setIcon(new ImageIcon(clickCardList.get(1).path));
+	            
+	            check_card = true;
+	         }
+	      }
+	}
+	
+	
+	
+	public static void main(String[] args) 
+	{    
+		Runnable runnable = new Runnable() {
+			
+			public void run() {
+			
+					if(check_card){
+						ActionListenerManager.canClick = false;
+				        try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				        clickCardList.get(0).card.setIcon(new ImageIcon("Resource/backImage.png"));
+				        clickCardList.get(0).isFlip = false;
+				        clickCardList.get(1).card.setIcon(new ImageIcon("Resource/backImage.png"));
+				        clickCardList.get(1).isFlip = false;
+				        check_card = false;
+				        clickCardList.clear();
+				        ActionListenerManager.canClick = true;
+					}
+				
+			}
+			
+			};
+			
+			ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+			
+
+
+		Draw();
+		service.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.MICROSECONDS);
+	      
+		for(int i = 0; i<cardArr.length; i++)
+		{
+			
+			switch(cardArr[i].num)
+			{
+			case 1:
+				cardArr[i].path = "Resource/Eng/1_1.png";
+				cardArr[i].type = 1;
+				break;
+			case 2:
+				cardArr[i].path = "Resource/Eng/1_2.png";
+				cardArr[i].type = 1;
+				break;
+			case 3:
+				cardArr[i].path = "Resource/Eng/2_1.png";
+				cardArr[i].type = 2;
+				break;
+			case 4:
+				cardArr[i].path = "Resource/Eng/2_2.png";
+				cardArr[i].type = 2;
+				break;
+			case 5:
+				cardArr[i].path = "Resource/Eng/3_1.png";
+				cardArr[i].type = 3;
+				break;
+			case 6:
+				cardArr[i].path = "Resource/Eng/3_2.png";
+				cardArr[i].type = 3;
+				break;
+			case 7:
+				cardArr[i].path = "Resource/Eng/4_1.png";
+				cardArr[i].type = 4;
+				break;
+			case 8:
+				cardArr[i].path = "Resource/Eng/4_2.png";
+				cardArr[i].type = 4;
+				break;
+			case 9:
+				cardArr[i].path = "Resource/Eng/5_1.png";
+				cardArr[i].type = 5;
+				break;
+			case 10:
+				cardArr[i].path = "Resource/Eng/5_2.png";
+				cardArr[i].type = 5;
+				break;
+			case 11:
+				cardArr[i].path = "Resource/Eng/6_1.png";
+				cardArr[i].type = 6;
+				break;
+			case 12:
+				cardArr[i].path = "Resource/Eng/6_2.png";
+				cardArr[i].type = 6;
+				break;
+			case 13:
+				cardArr[i].type = 7;
+				cardArr[i].path = "Resource/Eng/7_1.png";
+				break;
+			case 14:
+				cardArr[i].path = "Resource/Eng/7_2.png";
+				cardArr[i].type = 7;
+				break;
+			case 15:
+				cardArr[i].path = "Resource/Eng/8_1.png";
+				cardArr[i].type = 8;
+				break;
+			case 16:
+				cardArr[i].path = "Resource/Eng/8_2.png";
+				cardArr[i].type = 8;
+				break;
+			case 17:
+				cardArr[i].path = "Resource/Eng/9_1.png";
+				cardArr[i].type = 9;
+				break;
+			case 18:
+				cardArr[i].path = "Resource/Eng/9_2.png";
+				cardArr[i].type = 9;
+				break;
+			case 19:
+				cardArr[i].path = "Resource/Eng/10_1.png";
+				cardArr[i].type = 10;
+				break;
+			case 20:
+				cardArr[i].path = "Resource/Eng/10_2.png";
+				cardArr[i].type = 10;
+				break;
+			}
+		
+		}
+	}
+
+}

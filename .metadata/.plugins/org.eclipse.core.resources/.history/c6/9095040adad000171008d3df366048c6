@@ -1,0 +1,10 @@
+import java.util.ArrayList;
+
+public class Scene 
+{
+	final static int SIZE = 20; // 카드 개수
+	final static int cardWidth = 80; // 카드 너비
+	final static int cardHeight = 100; // 카드 높이
+	static int index = 0;
+	public static ArrayList<Card> clickCardList = new ArrayList<Card>();
+}

@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Scene 
+{
+	final static int SIZE = 20; // 카드 개수
+	final static int cardWidth = 80; // 카드 너비
+	final static int cardHeight = 100; // 카드 높이
+	static int index = 0;
+	public static ArrayList<Card> clickCardList = new ArrayList<Card>();
+	public static Card[] cardArr = new Card[SIZE];
+	
+	public static void Draw()
+	{
+		JFrame frame = new JFrame("카드게임 아하핳ㅎ하ㅏ핳");
+		JPanel panel = new JPanel();
+		
+		int cardNum[] = new int[SIZE];	// 카드 번호를 저장하는 배열
+		//boolean bCheckExistOfNum[] = new boolean[SIZE]; // 중복 체크를 하는 배열
+		int posX = 10;
+		int posY = 10;
+		
+		frame.setLayout(null);
+		panel.setLayout(null);
+		
+		panel.setSize(475, 490);
+		
+		
+		for(int i = 0; i<cardArr.length; i++)
+		{
+						
+			cardArr[i] = new Card();
+			cardArr[i].num = cardNum[i];
+			cardArr[i].card.setBounds(posX , posY, cardWidth, cardHeight);
+			cardArr[i].card.addActionListener(new ActionListenerManager(cardArr[i]));
+			
+			posX += 90;
+			if((i + 1) % 5 == 0) 
+			{
+				posX = 10;
+				posY += 110;
+			}
+		
+			panel.add(cardArr[i].card);
+		}
+		
+		frame.add(panel);
+
+		frame.setSize(475, 490);
+		frame.setVisible(true);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+		for(int i = 0; i<cardNum.length; i++)	// 중복되지않는 랜덤값 부여
+		{
+			cardNum[i] = (int)(Math.random() * 20) + 1;
+			
+			for(int j=0; j<i; j++)
+			{
+				if(cardNum[i] == cardNum[j])
+				{
+					i--;
+					break;
+				}
+			}
+		}
+	}
+}
